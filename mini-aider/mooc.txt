@@ -1,0 +1,13 @@
+user_input: 实现一个支持通配符的文件过滤器, 例如函数：
+
+filter_files(files: list[str], pattern: str) -> list[str]
+
+支持：
+* 匹配任意字符
+? 匹配单字符
+
+
+context_files: mooc_exam.py
+
+read_only_files: mooc_exam.py
+  

@@ -1,0 +1,50 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>File Diffs</title>
+            <style>
+                body { font-family: monospace; margin: 20px; }
+                .file-block { margin-bottom: 20px; border: 1px solid #ccc; padding: 10px; }
+                .diff-block { background-color: #f8f8f8; overflow-x: auto; }
+                .meta { color: #666; font-style: italic; }
+                h2 { margin-top: 0; }
+            </style>
+        </head>
+        <body>
+            <h1>文件差异对比</h1>
+            
+                <section class="file-block">
+                    <h2>wildcard_filter.py</h2>
+                    <pre class="diff-block">--- a/wildcard_filter.py
++++ b/wildcard_filter.py
+@@ -0,0 +1,24 @@
++def wildcard_filter(files, pattern):
++    &quot;&quot;&quot;
++    过滤出匹配通配符模式的文件列表。
++    支持 * (匹配任意字符序列) 和 ? (匹配单个任意字符)
++    
++    Args:
++        files: 字符串列表，表示文件名
++        pattern: 字符串，通配符模式，如 &quot;*.py&quot;, &quot;test?.txt&quot;
++    
++    Returns:
++        匹配的文件名列表
++    &quot;&quot;&quot;
++    import re
++    
++    # 将通配符模式转换为正则表达式
++    # 转义正则特殊字符（除了 * 和 ?）
++    escaped = re.escape(pattern)
++    # 将 \* 替换为 .*，\? 替换为 .
++    regex_pattern = escaped.replace(&#x27;\\*&#x27;, &#x27;.*&#x27;).replace(&#x27;\\?&#x27;, &#x27;.&#x27;)
++    # 添加行首行尾锚点
++    regex_pattern = &#x27;^&#x27; + regex_pattern + &#x27;$&#x27;
++    
++    compiled = re.compile(regex_pattern)
++    return [f for f in files if compiled.match(f)]</pre>
+                </section>
+                
+        </body>
+        </html>
+        

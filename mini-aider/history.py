@@ -1,0 +1,2 @@
+class ChatHistory:
+    pass
